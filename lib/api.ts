@@ -5,9 +5,7 @@
 
 import type { LoginResponse, RefreshResponse, ApiResponse } from "./types";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL 
-  ? `${process.env.NEXT_PUBLIC_API_URL}/api` 
-  : "https://server-pz3x.onrender.com/api";
+const BASE_URL = "/api";
 const TOKEN_KEY = "pvp_observer_token";
 
 let accessToken: string | null = (typeof window !== "undefined") ? localStorage.getItem(TOKEN_KEY) : null;
@@ -212,7 +210,6 @@ export const api = {
 
   getDeskImageUrl(resultId: string): string {
     const token = getAccessToken() || "";
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://server-pz3x.onrender.com";
-    return `${baseUrl}/api/results/desk/${resultId}/image?token=${token}`;
+    return `/api/results/desk/${resultId}/image?token=${token}`;
   },
 };
